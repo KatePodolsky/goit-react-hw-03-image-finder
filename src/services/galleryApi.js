@@ -8,5 +8,5 @@ const fetchImages = ({ searchQuery = '', currentPage = 1, perPage = 12 }) => {
   `)
         .then(response => response.data.hits);
 }
-
-export default {fetchImages}
+// eslint-disable-next-line
+export default { fetchImages }

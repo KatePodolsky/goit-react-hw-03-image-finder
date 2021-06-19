@@ -1,22 +1,31 @@
 import React from "react";
-// import PropTypes from 'prop-types';
-import styles from "./ImageGallery.module.css";
+import PropTypes from 'prop-types';
 import ImageGalleryItem from "../ImageGalleryItem/ImageGalleryItem"
+import defaulFoto from "./Default_image.jpg";
 
-const ImageGallery = ({ images }) => (
+import styles from "./ImageGallery.module.css";
+
+const ImageGallery = ({ images, openModal }) => (
         <ul className={styles.ImageGallery}>
             {images.map((image) => (
-                <ImageGalleryItem key={image.id} image={image} />
+                    <ImageGalleryItem key={image.id} image={image} openModal={openModal} />
         ))}
         </ul>
 )
 
-// ImageGallery.propTypes = {
-//     images: PropTypes.arrayOf(PropTypes.shape({
-//         id: PropTypes.number.isRequired,
-//         webformatUR: PropTypes.string.isRequired,
-//         largeImageURL: PropTypes.string.isRequired,
-//     })).isRequired,
-// }
+ImageGallery.defaultProps = {
+        webformatUR: defaulFoto,
+        largeImageURL: defaulFoto,
+        tags:'No image available'
+}
+
+ImageGallery.propTypes = {
+    images: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        webformatUR: PropTypes.string,
+        largeImageURL: PropTypes.string,
+        tags: PropTypes.string,
+    })).isRequired,
+}
 
 export default ImageGallery;
